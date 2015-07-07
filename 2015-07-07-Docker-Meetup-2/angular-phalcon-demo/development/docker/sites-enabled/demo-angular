@@ -1,0 +1,11 @@
+server {
+       server_name demo.dev;
+       server_name_in_redirect off;
+
+       root /app/public;
+       index angular.html;
+
+       location / {
+                try_files $uri $uri/ /angular.html$is_args$args;
+       }
+}

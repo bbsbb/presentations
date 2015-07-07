@@ -9,7 +9,10 @@
   [Docker Bulgaria Meetup Group](http://www.meetup.com/Docker-Bulgaria/)
 * Docker To Production lightning talk - 2015-05-13 @
   [Docker Bulgaria Meetup Group](http://www.meetup.com/Docker-Bulgaria/)
-
+* DockerCon 2015 Recap - 2015-07-07 @
+  [Docker Bulgaria Meetup Group](http://www.meetup.com/Docker-Bulgaria/)
+* Angular/Phalcon/PSQL Docker-Compose demo - 2015-07-07 @
+  [Docker Bulgaria Meetup Group](http://www.meetup.com/Docker-Bulgaria/)
 
 ## License
 

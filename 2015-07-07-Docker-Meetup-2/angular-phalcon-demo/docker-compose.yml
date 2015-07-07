@@ -1,0 +1,23 @@
+www:
+  build: .
+  dockerfile: Webserver.dockerfile
+  volumes:
+    - "development/docker/sites-enabled:/etc/nginx/sites-enabled"
+    - "app/:/app"
+  ports:
+    - "80:80"
+  links:
+    - psql
+psql:
+  build: .
+  dockerfile: Database.dockerfile
+  environment:
+    DB_PASS: developer
+  volumes:
+    - "development/db/:/var/lib/postgresql/data"
+assets:
+  build: .
+  dockerfile: Assets.dockerfile
+  command: assets:gulp watch
+  volumes:
+    - "app/:/app"

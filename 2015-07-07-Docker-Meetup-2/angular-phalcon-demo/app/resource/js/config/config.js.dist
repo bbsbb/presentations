@@ -1,0 +1,7 @@
+(function (angular) {
+    angular.module('Demo').constant('CONFIG', {
+        api: {
+            url: '{{API_URL}}'
+        }
+    });
+})(window.angular);
