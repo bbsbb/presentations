@@ -13,6 +13,8 @@
   [Docker Bulgaria Meetup Group](http://www.meetup.com/Docker-Bulgaria/)
 * Angular/Phalcon/PSQL Docker-Compose demo - 2015-07-07 @
   [Docker Bulgaria Meetup Group](http://www.meetup.com/Docker-Bulgaria/)
+* Inside Go Concurrency - 2017-06-06 @
+  [Docker Bulgaria Meetup Group](https://www.meetup.com/Golang-Bulgaria/)
 
 ## License
 

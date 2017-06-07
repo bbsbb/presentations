@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Shower Presentation Engine</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+</head>
+<body class="shower list">
+
+  <header class="caption">
+	<h1>Inside GO Concurrency</h1>
+	<p>Boyan Bonev - b.bonev@redbuffstudio.com</p>
+  </header>
+
+  <section class="slide" id="cover">
+	<h2>Inside GO Concurrency</h2>
+	<p>Boyan Bonev - b.bonev@redbuffstudio.com</p>
+    <h3 class="next shout" style="font-size:42px">This is a true story. Except when it's not.</h3>
+    <style>
+	  #cover h2 {
+	  margin:30px 0 0;
+	  color:#384d54;
+	  text-align:center;
+	  font-size:70px;
+	  }
+
+	  #cover p {
+	  margin:10px 0 0;
+	  text-align:center;
+	  color:#384d54;
+	  font-style:italic;
+	  font-size:20px;
+	  }
+
+	  #cover {
+	  background: #FFF url(pictures/golang-logo.png) 495px 370px no-repeat;
+	  }
+
+    </style>
+  </section>
+
+  <section class="slide" id="why-concurrency">
+	<h2>define:concurrent</h2>
+    <p class="next note"><b>concurrent (dictionary)</b> [\kən-ˈkər-ənt] adjective. <br />
+      - operating or occurring at the same time <br />
+      - acting in conjunction
+    </p>
+    <p class="next note"><b>concurrent process (software)</b> [\kən-ˈkər-ənt ˈyü-nəts\] 😠
+noun.<br />
+      - Computational units with overlapping lifetimes, designed to be executed (mostly) out of order, known to provoke night sweats.<br />
+      - Oh yeah, they also need to share facts about the world... 😱
+    </p>
+    <style>
+      #why-concurrency {
+	  background: #FFF url(pictures/golang-logo2.png) 790px 470px no-repeat;
+	  }
+
+    </style>
+  </section>
+
+	<section class="slide" id="ouat">
+      <h2>Once upon a concurrent time...</h2>
+      <p class="place">
+        <img class="next" src="pictures/dijkstra.jpg" alt="E. Dijkstra" />
+        <img class="omgbig next" src="pictures/hewitt.jpg" alt="C. Hewitt" />
+        <img class="next" src="pictures/hoare.jpg" alt="T. Hoare" />
+      </p>
+      <style>
+      #ouat {
+	  background: #FFF url(pictures/golang-logo3.png) 790px 470px no-repeat;
+	  }
+
+        #ouat p {
+        white-space: nowrap;
+        }
+        #ouat img {
+        margin: 15px;
+        width: 200px;
+        }
+        #ouat .omgbig {
+        width: 280px;
+        }
+      </style>
+	</section>
+
+	<section class="slide" id="models">
+	  <h2>How we do concurrency?</h2>
+      <ul>
+        <li class="next"><i>Communicate by sharing</i> - Manual race conditions protection, semaphors, mutexes => thread safety guaranteed by the developer. (C++, Java etc.)</li>
+        <li class="next"><i>Actor Model</i> - Actors are encapuslating state, have an identity and communicate via message passing. Guaranteed independence outside of inbox/delivery. (Erlang, Elixir, Scala via Acca(kind of))</li>
+        <li class="next"><i>CSP</i> - Anonymous units(processes), channels are the structure used for information sharing. (Go, Clojure via core.async)</li>
+      </ul>
+      <style>
+        #models img {
+        position:absolute;
+        right:140px;
+        width: 120px;
+        }
+        #models {
+	  background: #FFF url(pictures/oldman.jpg) 690px 470px no-repeat;
+	    }
+
+      </style>
+	</section>
+
+	<section class="slide" id="gogogo">
+	  <h2>So, I heard we'll talk about Go?</h2>
+	  <ul>
+		<li>Golang Runtime - It's in Go.</li>
+        <li class="next">The Scheduler - Make it all tick.</li>
+        <li class="next">Goroutines - Anonymous units of work.</li>
+        <li class="next">Channels - Data structures used for unidirectional communnication.</li>
+        <li class="next">"sync", "unsafe". </li>
+	  </ul>
+      <style>
+        #gogogo {
+	  background: #FFF url(pictures/golang-logo4.png) 540px 420px no-repeat;
+	    }
+
+      </style>
+	</section>
+
+	<section class="slide" id="scheduler">
+	  <h2>Scheduler</h2>
+      <p class="place">
+        <ul>
+          <li>Implementation @ <i>src/runtime/proc.go</i></li>
+        </ul>
+      </p>
+      <img class="next" src="pictures/scheduler.png" />
+      <p class="note next">
+        <span><b>References:</b></span><br />
+        "Analysis of the Go runtime scheduler" - Deshpande, Sponsler, Weiss<br />
+        "Scheduling Multithreaded Computations by Work Stealing" - Blumofe, Leiserson
+      </p>
+      <style>
+        #scheduler .note {
+        font-size: 22px;
+        }
+      </style>
+	</section>
+
+	<section class="slide" id="goroutines">
+	  <h2>Goroutines</h2>
+      <p class="place left">
+        <ul style="width: 50%;">
+          <li>Abstract structures representing computation units.</li>
+          <li>Executed in user space with reduced overhead - stack size control, faster context switching. Green threads.</li>
+          <li>1 : &#8734; mapping to OS threads (unless LockOsThread)</li>
+          <li>Bottlenecks - I/O, syscalls.</li>
+        </ul>
+      </p>
+      <style>
+        #goroutines {
+	    background: #FFF url(pictures/goroutines.png) 475px 130px no-repeat;
+	    }
+      </style>
+	</section>
+
+	<section class="slide" id="channels">
+	  <h2>Channels</h2>
+      <ul class="place left" style="margin-left:75px;margin-top: -75px;">
+        <li>Implementation @ <i>src/runtime/chan.go</i></li>
+        <li>Message queues?</li>
+      </ul>
+      <ul class="place right"  style="right:75px;margin-top: -75px;">
+        <li>Blocking only on goroutine level.</li>
+        <li>Mutex controlled on send/rec/close.</li>
+      </ul>
+      <style>
+        #channels {
+	    background: #FFF url(pictures/golang-channels.jpg) 55px 310px no-repeat;
+	    }
+      </style>
+	</section>
+
+    <section class="slide" id="trivia">
+      <h2>Do you even know?</h2>
+      <ul>
+        <li class="next">Goroutine current default stack size?</li>
+        <li class="next">What is the Go maximum stack size? </li>
+        <li class="next">What happens if you send/receive to/from a nil channel?</li>
+        <li class="next">What happens if you send/receive to/from a closed channel?</li>
+        <li class="next">And if you <i>put</i> onto a full buffered channel?</li>
+        <li class="next">Maps in Go are not ...&lt;insert here&gt;</li>
+        <li class="next">Is Go concurrency performance good enough for you?</li>
+      </ul>
+    </section>
+    <section class="slide" id="end">
+      <h2 class="shout">Thank you!</h2>
+      <style>
+	    #end {
+	    background: #FFF url(pictures/golang-gentlemen.jpg) 15px 200px no-repeat;
+        background-size: 250px 440px;
+	    }
+      </style>
+    </section>
+	<div class="progress"></div>
+
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2017 Yours Truly, Famous Inc. -->
+
+</body>
+</html>
