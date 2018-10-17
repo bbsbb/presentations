@@ -21,6 +21,10 @@
   [Dev.BG IT Managers](http://dev.bg/%D1%81%D1%8A%D0%B1%D0%B8%D1%82%D0%B8%D0%B5/pair-programming-for-agile-teams/)
 * A Tale of Ledgers & Blockchains - 2018-02-22 @
   [Golang Bulgaria Meetup](https://www.meetup.com/Golang-Bulgaria/)
+* Apache Spark - The What/Why/When of batching vs streaming - 2018-05-17 @
+  [Uber Engineering Events](https://www.meetup.com/Uber-Engineering-Events-Sofia/)
+* Microservices in GO with GRPC and Protobuffers - 2018-09-13 @
+  [Golang Bulgaria Meetup](https://www.meetup.com/Golang-Bulgaria/)
 
 ## License
 
