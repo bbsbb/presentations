@@ -25,7 +25,7 @@
   [Uber Engineering Events](https://www.meetup.com/Uber-Engineering-Events-Sofia/)
 * Microservices in GO with GRPC and Protobuffers - 2018-09-13 @
   [Golang Bulgaria Meetup](https://www.meetup.com/Golang-Bulgaria/)
-* Building a Functional frontend with Clojurescript & Re-frame
+* Building a Functional frontend with Clojurescript & Re-frame - 2018-11-17 @
   [jsTalks 2018](https://www.jstalks.net)
 
 ## License
