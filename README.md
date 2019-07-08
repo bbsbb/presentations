@@ -27,6 +27,9 @@
   [Golang Bulgaria Meetup](https://www.meetup.com/Golang-Bulgaria/)
 * Building a Functional frontend with Clojurescript & Re-frame - 2018-11-17 @
   [jsTalks 2018](https://www.jstalks.net)
+* Clojure All The Things - Experience report - 2019-03-14 @ Techhuddle Tech Events
+* To X Sync and Back Again - 2019-06-12 @  [Golang Bulgaria Meetup](https://www.meetup.com/Golang-Bulgaria/events/261805018/)
+* Data Science in Real Estate - 2019-07-02 @ [Data Science Society](https://www.datasciencesociety.net/)
 
 ## License
 
