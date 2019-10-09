@@ -30,9 +30,9 @@
 * Clojure All The Things - Experience report - 2019-03-14 @ Techhuddle Tech Events
 * To X Sync and Back Again - 2019-06-12 @  [Golang Bulgaria Meetup](https://www.meetup.com/Golang-Bulgaria/events/261805018/)
 * Data Science in Real Estate - 2019-07-02 @ [Data Science Society](https://www.datasciencesociety.net/)
+* The Gopher Bulgaria PubQuizz #1 - 2019-09-24 @ [Golang Bulgaria Meetup](https://www.meetup.com/Golang-Bulgaria/events/264714903/)
 
 ## License
 
-    Copyright © 2018 Boyan Bonev
-
+    Copyright © 2014-2019 Boyan Bonev
     Distributed under the MIT License
